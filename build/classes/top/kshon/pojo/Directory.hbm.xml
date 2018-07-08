@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+   <!-- 文件目录表 -->
+   <class name="top.kshon.pojo.Directory" table="directory">
+        <id name="directory_id" column="directory_id" type="java.lang.Integer">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" column="name" type="string" />
+        <property name="parent_id" column="parent_id" type="java.lang.Integer" />
+        <property name="createtime" column="createtime" type="java.util.Date" />
+        <many-to-one name="person" class="top.kshon.pojo.Person" column="person_id" />
+    </class>
+</hibernate-mapping>

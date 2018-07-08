@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>smallDisk</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns="http://java.sun.com/xml/ns/javaee"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+   id="WebApp_ID"
+   version="3.0">
+<display-name>校园网盘</display-name>
+<welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+</welcome-file-list>
+  
+  <!-- 解决session延迟加载 -->
+  <filter>
+     <filter-name>openSessionInViewFilter</filter-name>
+     <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  
+  <!-- 监听器(整合struts2) -->
+  <listener>
+     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- 加载spring配置 -->
+  <context-param>
+     <param-name>contextConfigLocation</param-name>
+     <!-- 这里如果bean.xml在包cn.ssh下，那么就应该写为：cn/ssh/applicationContext.xml -->
+     <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+  <!-- 配置strut2的核心Filter -->
+  <filter>
+      <!-- 过滤器名 -->
+       <filter-name>struts2</filter-name>
+      <!-- Filter的实现类 -->
+       <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+     <filter-name>struts2</filter-name>
+     <!-- 匹配所有请求 -->
+     <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

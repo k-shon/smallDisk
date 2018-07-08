@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+   <!-- 文件上传表 -->
+   <class name="top.kshon.pojo.Upload" table="upload">
+      <id name="upload_id" column="upload_id" type="java.lang.Integer">
+          <generator class="native"></generator>
+      </id>
+      <property name="name" column="name" type="string" />
+      <property name="size" column="size" type="java.lang.Long" />
+      <property name="type" column="type" type="string" />
+      <property name="path" column="path" type="string" />
+      <property name="createtime" column="createtime" type="java.util.Date" />
+      
+      <many-to-one name="person" class="top.kshon.pojo.Person" column="person_id" />
+      <many-to-one name="directory" class="top.kshon.pojo.Directory" column="directory_id"></many-to-one>
+   </class>
+</hibernate-mapping>

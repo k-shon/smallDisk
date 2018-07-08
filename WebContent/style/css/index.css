@@ -1,0 +1,36 @@
+
+*{margin:0;padding:0}
+.mynav{margin:0;padding:0;background-color:#EFF4F8;}
+.logo{font-size:24px;text-align:center;height:80px;line-height:80px;}
+.logo img{width:60px;height:60px;}
+
+.menu1 ul li{list-style:none;font-size:18px;float:left;margin-right:30px;height:70px;line-height:70px;}
+.menu1 ul li:hover{cursor:pointer;border-bottom:2px solid #09F;}
+
+.menu2 ul li{list-style:none;font-size:14px;float:left;margin-right:30px;height:70px;line-height:70px;}
+.menu2 ul li:hover{cursor:pointer;}
+.leftLayout{margin:0;padding:0;background-color:#EFF4F8;}
+.leftLayout ul li{list-style:none; height:50px;line-height:50px; text-align:center;}
+.leftLayout ul li:hover{cursor:pointer;background-color:#E3E8EB}
+.leftLayout ul li span{margin:10px;}
+.leftLayout ul li a{text-decoration:none;font-size:16px;}
+
+
+.rightLayout{margin:0;padding:0;}
+
+.right-top ul li{margin-left:15px;list-style:none; float:left;}
+.right-top ul li span{margin-right:10px;}
+
+.right-midding span{margin-left:15px;}
+
+.right-content{clear:both;}
+.content-header ul li{list-style:none;cursor:pointer;height:40px;line-height:40px;display: inline;}
+.content-header ul li:hover{background-color:#F6FAFF;border:1px solid #DAEBFE;}
+
+.content-body ul li{list-style:none;height:40px;line-height:40px;}
+.content-body ul li:hover{background-color:#F6FAFF;border:1px solid #DAEBFE;}
+.content-body ul li div img{margin-left:15px;margin-right:10px;width:30px;height:30px;}
+.content-body ul li div a{text-decoration:none; cursor:pointer;}
+.content-body ul li div span{height:40px; display:none;}
+.content-body ul li div span img{width:18px;height:18px;margin-top:7px;}
+.content-body ul li div span img:hover{opacity:0.5;cursor:pointer;}
