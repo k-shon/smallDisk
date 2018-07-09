@@ -13,5 +13,6 @@
         <property name="introduction" column="introduction" type="string" />
         <property name="picture" column="picture" type="string" />
         <property name="createtime" column="createtime" type="java.util.Date" />
+        <one-to-one name="user" class="top.kshon.pojo.User"></one-to-one>
     </class>
 </hibernate-mapping>

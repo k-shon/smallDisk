@@ -44,7 +44,7 @@
               <value>top/kshon/pojo/Person.hbm.xml</value>
               <value>top/kshon/pojo/Directory.hbm.xml</value>
               <value>top/kshon/pojo/Upload.hbm.xml</value>
-              
+              <value>top/kshon/pojo/Share.hbm.xml</value>
            </list>
         </property>
     </bean>
@@ -54,28 +54,58 @@
         <!-- 注入sessionFactory -->
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <!-- hibernate事务管理 -->
-    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-         <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <!-- 事务的注解驱动 -->
-    <tx:annotation-driven transaction-manager="txManager"/>
-    <!-- 事务增强 -->
-    <tx:advice id="txAdvice" transaction-manager="txManager">
-        <tx:attributes>
-            <tx:method name="save"/>
-            <tx:method name="update"/>
-            <tx:method name="delete"/>
-            <!-- 只读 -->
-            <tx:method name="find" read-only="true"/>
-        </tx:attributes>
-    </tx:advice>
+     <!-- 配置事务管理器 -->
+   <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+       <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+   <!-- 事务增强 -->
+   <tx:advice id="txAdvice" transaction-manager="transactionManager">
+       <tx:attributes>
+           <tx:method name="get*"/>
+           <tx:method name="*"/>
+       </tx:attributes>
+   </tx:advice>
+   <!-- 开启注解事务 -->
+   <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    <!-- 配置struts2的action、dao、service -->
-    <bean id="userDaoImpl" class="top.kshon.dao.UserDaoImpl">
+    <!-- 配置dao-->
+    <bean id="userDao" class="top.kshon.dao.impl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="userService" class="top.kshon.service.UserServiceImpl">
-        <!-- 注入userDao -->
-        <property name="userDao" ref="userDaoImpl" />
+    <bean id="personDao" class="top.kshon.dao.PersonDao">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="directoryDao" class="top.kshon.dao.DirectoryDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="uploadDao" class="top.kshon.dao.UploadDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="shareDao" class="top.kshon.dao.ShareDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <!-- 配置service-->
+    <bean id="userService" class="top.kshon.service.impl.UserServiceImpl">
+        <property name="uDao" ref="userDao" />
+    </bean>
+    <bean id="personService" class="top.kshon.service.PersonService">
+        <property name="pDao" ref="personDao" />
+    </bean>
+    <bean id="directoryService" class="top.kshon.service.DirectoryService">
+        <property name="dDao" ref="directoryDao" />
+    </bean>
+    <bean id="uploadService" class="top.kshon.service.UploadService">
+        <property name="uploadDao" ref="uploadDao" />
+    </bean>
+    <bean id="shareService" class="top.kshon.service.ShareService">
+        <property name="sDao" ref="shareDao" />
+    </bean>
+    <!-- 配置action-->
+    <bean id="userAction" class="top.kshon.action.UserAction">
+        <property name="uService" ref="userService" />
+    </bean>
+    <bean id="personAction" class="top.kshon.action.PersonAction">
+        <property name="pService" ref="personService" />
+    </bean>
+   
 </beans>

@@ -7,9 +7,13 @@
    <!-- 开发阶段，可进行调试 -->
    <constant name="struts.devMode" value="true"></constant>
    
-   <package name="user" namespace="/user" extends="struts-default">
-      <action name="userAction" class="userService">
-         <result name="success">/success.jsp</result>
+   <package name="user" namespace="/" extends="struts-default">
+      <action name="user_*" class="userAction" method="{1}">
+         <result name="success">/index.jsp</result>
+         <result name="login">/login.jsp</result>
+      </action>
+      <action name="register" class="loginAction" method="register">
+         <result name="success">/index.jsp</result>
          <result name="error">/error.jsp</result>
       </action>
    </package>

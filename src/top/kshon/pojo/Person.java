@@ -10,6 +10,14 @@ public class Person {
 	private String introduction;
 	private String picture;
 	private Date createtime;
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public int getPerson_id() {
 		return person_id;
 	}

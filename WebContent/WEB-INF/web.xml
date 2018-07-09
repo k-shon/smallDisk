@@ -13,7 +13,20 @@
   <filter>
      <filter-name>openSessionInViewFilter</filter-name>
      <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+     <init-param> <!--单例模式，可以省略-->
+            <param-name>singleSession</param-name>
+            <param-value>true</param-value>
+        </init-param>
+            <!--解决该问题的关键代码-->
+        <init-param>
+            <param-name>FlushMode</param-name>
+            <param-value>AUTO</param-value>
+        </init-param>
   </filter>
+  <filter-mapping>
+        <filter-name>openSessionInViewFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
   
   <!-- 监听器(整合struts2) -->
   <listener>
