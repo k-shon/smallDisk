@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="top.kshon.pojo.Person" table="person">
         <id name="person_id" column="person_id" type="java.lang.Integer">
-           <generator class="native"></generator>
+           <generator class="identity"></generator>
         </id>
         <property name="name" column="name" type="string" />
         <property name="email" column="email" type="string" />
@@ -13,6 +13,5 @@
         <property name="introduction" column="introduction" type="string" />
         <property name="picture" column="picture" type="string" />
         <property name="createtime" column="createtime" type="java.util.Date" />
-        <one-to-one name="user" class="top.kshon.pojo.User"></one-to-one>
     </class>
 </hibernate-mapping>

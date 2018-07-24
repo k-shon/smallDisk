@@ -9,9 +9,11 @@
         <id name="directory_id" column="directory_id" type="java.lang.Integer">
             <generator class="native"></generator>
         </id>
-        <property name="name" column="name" type="string" />
-        <property name="parent_id" column="parent_id" type="java.lang.Integer" />
+        <property name="name" column="name" type="string" unique-key="unique_key" />
+        <property name="parent_id"  type="java.lang.Integer" unique-key="unique_key">
+            <column name="parent_id" default="0"></column>
+        </property>
         <property name="createtime" column="createtime" type="java.util.Date" />
-        <many-to-one name="person" class="top.kshon.pojo.Person" column="person_id" />
+        <many-to-one name="person" class="top.kshon.pojo.Person" column="person_id" cascade="save-update" lazy="false" />
     </class>
 </hibernate-mapping>

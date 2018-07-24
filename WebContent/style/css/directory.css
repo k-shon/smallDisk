@@ -1,0 +1,7 @@
+.directory_list li{list-style:none;height:40px;line-height:40px;}
+.directory_list li:hover{background-color:#F6FAFF;border:1px solid #DAEBFE;}
+.directory_list li div img{margin-left:15px;margin-right:10px;width:30px;height:30px;}
+.directory_list li div a{text-decoration:none; cursor:pointer;}
+.directory_list li div span{height:40px; display:none;}
+.directory_list li div span img{width:18px;height:18px;margin-top:7px;}
+.directory_list li div span img:hover{opacity:0.5;cursor:pointer;}

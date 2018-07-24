@@ -72,10 +72,10 @@
     <bean id="userDao" class="top.kshon.dao.impl.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="personDao" class="top.kshon.dao.PersonDao">
+    <bean id="personDao" class="top.kshon.dao.impl.PersonDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="directoryDao" class="top.kshon.dao.DirectoryDao">
+    <bean id="directoryDao" class="top.kshon.dao.impl.DirectoryDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="uploadDao" class="top.kshon.dao.UploadDao">
@@ -84,14 +84,16 @@
     <bean id="shareDao" class="top.kshon.dao.ShareDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    
     <!-- 配置service-->
     <bean id="userService" class="top.kshon.service.impl.UserServiceImpl">
         <property name="uDao" ref="userDao" />
-    </bean>
-    <bean id="personService" class="top.kshon.service.PersonService">
         <property name="pDao" ref="personDao" />
     </bean>
-    <bean id="directoryService" class="top.kshon.service.DirectoryService">
+    <bean id="personService" class="top.kshon.service.impl.PersonServiceImpl">
+        <property name="pDao" ref="personDao" />
+    </bean>
+    <bean id="directoryService" class="top.kshon.service.impl.DirectoryServiceImpl">
         <property name="dDao" ref="directoryDao" />
     </bean>
     <bean id="uploadService" class="top.kshon.service.UploadService">
@@ -100,12 +102,17 @@
     <bean id="shareService" class="top.kshon.service.ShareService">
         <property name="sDao" ref="shareDao" />
     </bean>
+    
     <!-- 配置action-->
     <bean id="userAction" class="top.kshon.action.UserAction">
         <property name="uService" ref="userService" />
+        <property name="pService" ref="personService" />
+        <property name="dService" ref="directoryService" />
     </bean>
     <bean id="personAction" class="top.kshon.action.PersonAction">
         <property name="pService" ref="personService" />
     </bean>
-   
+     <bean id="directoryAction" class="top.kshon.action.DirectoryAction">
+        <property name="dService" ref="directoryService" />
+    </bean>
 </beans>

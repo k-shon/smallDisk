@@ -5,16 +5,36 @@
    
 <struts>
    <!-- 开发阶段，可进行调试 -->
-   <constant name="struts.devMode" value="true"></constant>
-   
+   <constant name="struts.devMode" value="false"></constant>
+   <!-- 设置编码 -->
+   <constant name="struts.i18n.encoding" value="utf-8"/>
    <package name="user" namespace="/" extends="struts-default">
       <action name="user_*" class="userAction" method="{1}">
-         <result name="success">/index.jsp</result>
+         <result name="success" type="redirect">/index.jsp</result>
          <result name="login">/login.jsp</result>
+         <result name="register">/register.jsp</result>
       </action>
-      <action name="register" class="loginAction" method="register">
-         <result name="success">/index.jsp</result>
-         <result name="error">/error.jsp</result>
+   </package>
+   <package name="person" namespace="/" extends="struts-default">
+       <action name="person_*" class="personAction" method="{1}">
+           <result name="success">/index.jsp</result>
+           <result name="error">/error.jsp</result>
+           <result name="edit">/person.jsp</result>
+           <result name="update">/index.jsp</result>
+       </action>
+   </package>
+   <package name="directory" namespace="/" extends="struts-default">
+      <action name="directory_*" class="directoryAction" method="{1}">
+         <result type="stream">
+              <!--指定stream流生成响应的数据类型-->
+              <param name="contentType">text/html</param>
+              <!--指定action中由哪个方法去输出InputStream类型的变量-->
+              <param name="inputName">inputStream</param>
+         </result>
+      </action>
+      <action name="*_directory" class="directoryAction" method="{1}Directory">
+         <result name="join">/directory.jsp</result>
+         <result name="all" type="redirect">/index.jsp</result>
       </action>
    </package>
 </struts>

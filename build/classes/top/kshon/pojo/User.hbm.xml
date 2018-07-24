@@ -10,5 +10,7 @@
          <property name="username" column="username" type="string" />
          <property name="password" column="password" type="string" />
          <property name="registertime" column="registertime" type="java.util.Date" />
+         <!-- 本来是这个是多对一的标签，但是这里可以加uinque=”true”，是一种特殊形式，形成了user和person的一对一关系。采用立即加载  -->
+         <many-to-one name="person" class="top.kshon.pojo.Person"  unique="true" fetch="select" lazy="false"></many-to-one>
     </class>
 </hibernate-mapping>

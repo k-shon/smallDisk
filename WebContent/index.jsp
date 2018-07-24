@@ -10,6 +10,7 @@
     <link type="text/css" href="style/css/index.css" rel="stylesheet">
 	<script type="text/javascript" src="style/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="style/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="style/js/index.js"></script>
 </head>
 <body>
     <div class="col nav mynav">
@@ -23,7 +24,8 @@
         </div>
         <div class="col-md-3 menu2">
            <ul>
-              <li><s:property value="#session.existUser.username"/></li>
+              <li><a href="${pageContext.request.contextPath}/person_edit.action"><s:property value="#session.person.name"/></a></li>
+              <li><a href="${pageContext.request.contextPath}/user_exit.action">退出</a></li>
            </ul>
         </div>
     </div>
@@ -44,7 +46,7 @@
                <div class="right-top">
                   <ul>
                      <li style="margin-left:15px;"><button class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-open"></span>上传</button></li>
-                     <li><button class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-folder-open"></span>新建文件夹</button></li>
+                     <li><button class="btn btn-default navbar-btn" onClick="newFile()"><span class="glyphicon glyphicon-folder-open"></span>新建文件夹</button></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                      <li>
@@ -61,9 +63,8 @@
                </div>
                <div style="clear:both;"></div>
                <div class="right-midding">
-                   <span><a>返回上一级 | </a></span>
-                   <span><a>全部文件</a></span>
-                   <span> > <a>java</a></span>
+                   <span class="return" style="display:none"><a>返回上一级 | </a></span>
+                   <span class="all"><a href="${pageContext.request.contextPath}/all_directory">全部文件</a></span>
                </div>
                <div class="right-content">
                    <div class="content-header">
@@ -75,71 +76,12 @@
                    </div>
                    <div style="clear:both;"></div>
                    <div class="content-body">
-                       <ul>
-                           <li class="col" onmouseover="showIcon(this)" onMouseOut="hideIcon(this)">
-                               <div class="col-md-6">
-                                   <img src="style/images/folder.png"/>
-                                   <a>17组织部</a>
-                                   <span class="icon">
-                                       <img src="style/images/share.png" class="pull-right"/>
-                                       <img src="style/images/upload.png" class="pull-right"/>
-                                       <img src="style/images/rename.png" class="pull-right"/>
-                                   </span>
-                               </div>
-                               <div class="col-md-3">-</div>
-                               <div class="col-md-3">2018-06-29</div>
-                           </li>
-                           <li class="col" onmouseover="showIcon(this)" onMouseOut="hideIcon(this)">
-                               <div class="col-md-6">
-                                   <img src="style/images/folder.png"/>
-                                   <a>Android</a>
-                                   <span class="icon">
-                                       <img src="style/images/share.png" class="pull-right"/>
-                                       <img src="style/images/upload.png" class="pull-right"/>
-                                       <img src="style/images/rename.png" class="pull-right"/>
-                                   </span>
-                               </div>
-                               <div class="col-md-3">-</div>
-                               <div class="col-md-3">2018-06-29</div>
-                           </li>
-                           <li class="col" onmouseover="showIcon(this)" onMouseOut="hideIcon(this)">
-                               <div class="col-md-6">
-                                   <img src="style/images/folder.png"/>
-                                   <a>书籍</a>
-                                   <span class="icon">
-                                       <img src="style/images/share.png" class="pull-right"/>
-                                       <img src="style/images/upload.png" class="pull-right"/>
-                                       <img src="style/images/rename.png" class="pull-right"/>
-                                   </span>
-                               </div>
-                               <div class="col-md-3">-</div>
-                               <div class="col-md-3">2018-06-29</div>
-                           </li>
-                           <li class="col" onmouseover="showIcon(this)" onMouseOut="hideIcon(this)">
-                               <div class="col-md-6">
-                                   <img src="style/images/folder.png"/>
-                                   <a>微信小程序</a>
-                                   <span class="icon">
-                                       <img src="style/images/share.png" class="pull-right"/>
-                                       <img src="style/images/upload.png" class="pull-right"/>
-                                       <img src="style/images/rename.png" class="pull-right"/>
-                                   </span>
-                               </div>
-                               <div class="col-md-3">-</div>
-                               <div class="col-md-3">2018-06-29</div>
-                           </li>
+                      <ul class="directory_list">
+                          <s:include value="directory.jsp"></s:include>
                        </ul>
                    </div>
                </div>
         </div>
 	</div>
 </body>
-<script>
-   function showIcon(obj){
-	   $(obj).find("span").show();
-   }
-   function hideIcon(obj){
-	   $(obj).find("span").hide();
-   }
-</script>
 </html>

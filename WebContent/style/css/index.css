@@ -22,6 +22,8 @@
 .right-top ul li span{margin-right:10px;}
 
 .right-midding span{margin-left:15px;}
+.right-midding .return a{text-decoration:none;cursor:pointer;}
+.right-midding .all a{text-decoration:none;color:black;}
 
 .right-content{clear:both;}
 .content-header ul li{list-style:none;cursor:pointer;height:40px;line-height:40px;display: inline;}

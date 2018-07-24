@@ -7,6 +7,13 @@ public class User {
 	private String username;
 	private String password;
 	private Date registertime;
+	private Person person;
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 	public int getUser_id() {
 		return user_id;
 	}

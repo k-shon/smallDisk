@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html >
 <html >
 <head>
@@ -19,7 +20,10 @@
 	<h1>注册</h1>
  </header>
  <div class="sr">
-	<form action="register" method="post">
+	<form action="user_register" method="post">
+	    <div style="color:red;">
+		     <s:actionerror/>
+		</div>
 		<div class="name">
 			<label>
 			<i class="sublist-icon glyphicon glyphicon-user"></i>
