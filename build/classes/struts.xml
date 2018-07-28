@@ -37,4 +37,9 @@
          <result name="all" type="redirect">/index.jsp</result>
       </action>
    </package>
+   <package name="upload" namespace="/" extends="struts-default">
+       <action name="upload_*" class="uploadAction" method="{1}">
+           <result name="success">/index.jsp</result>
+       </action>
+   </package>
 </struts>

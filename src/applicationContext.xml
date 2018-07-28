@@ -78,7 +78,7 @@
     <bean id="directoryDao" class="top.kshon.dao.impl.DirectoryDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="uploadDao" class="top.kshon.dao.UploadDao">
+    <bean id="uploadDao" class="top.kshon.dao.impl.UploadDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="shareDao" class="top.kshon.dao.ShareDao">
@@ -96,7 +96,7 @@
     <bean id="directoryService" class="top.kshon.service.impl.DirectoryServiceImpl">
         <property name="dDao" ref="directoryDao" />
     </bean>
-    <bean id="uploadService" class="top.kshon.service.UploadService">
+    <bean id="uploadService" class="top.kshon.service.impl.UploadServiceImpl">
         <property name="uploadDao" ref="uploadDao" />
     </bean>
     <bean id="shareService" class="top.kshon.service.ShareService">
@@ -114,5 +114,8 @@
     </bean>
      <bean id="directoryAction" class="top.kshon.action.DirectoryAction">
         <property name="dService" ref="directoryService" />
+    </bean>
+    <bean id="uploadAction" class="top.kshon.action.UploadAction">
+          <property name="uploadService" ref="uploadService" />
     </bean>
 </beans>

@@ -72,3 +72,12 @@ var parent_id = 0;
 			parent_id = directory_id;
 		});
 	}
+   //选择文件
+   function selectFile(){
+	   $("#file").click();
+   }
+   //上传文件
+   function uploadFile(){
+	   $("#uploadForm").submit();
+   }
+   

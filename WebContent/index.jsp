@@ -45,8 +45,10 @@
 	    <div class="col-md-10 rightLayout">
                <div class="right-top">
                   <ul>
-                     <li style="margin-left:15px;"><button class="btn btn-primary navbar-btn"><span class="glyphicon glyphicon-open"></span>上传</button></li>
-                     <li><button class="btn btn-default navbar-btn" onClick="newFile()"><span class="glyphicon glyphicon-folder-open"></span>新建文件夹</button></li>
+                     <li style="margin-left:15px;"><button class="btn btn-primary navbar-btn" onclick="selectFile()">
+                         <span class="glyphicon glyphicon-open"></span>上传</button></li>
+                     <li><button class="btn btn-default navbar-btn" onClick="newFile()">
+                          <span class="glyphicon glyphicon-folder-open"></span>新建文件夹</button></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                      <li>
@@ -83,5 +85,8 @@
                </div>
         </div>
 	</div>
+	<form id="uploadForm" action="upload_upload" method="post" enctype="multipart/form-data" style="display:none">
+	    <input type="file" id="file" name="uploadFile" onchange="uploadFile()">
+	</form>
 </body>
 </html>
